@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início | Mais Você</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilo-loja.css">
+    <link rel="stylesheet" href="assets/css/capas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">Mais Você</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="receitas.html" class="nav-link">Receitas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="minha-conta.html" class="nav-link">Minha Conta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contato.html" class="nav-link">Contato</a>
+                    </li>
+                </ul>
+                <div class="nav-cart">
+                    <a href="carrinho.html" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Viva em sua melhor versão.</h1>
+            <p class="hero-subtitle">Curadoria exclusiva de conteúdos sobre nutrição, exercícios e lifestyle para quem não abre mão da performance e da saúde.</p>
+            <a href="produtos.html" class="hero-cta">Confira nossa loja</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <h2 class="section-title">Sobre a Mais Você Ebooks</h2>
+            <p class="about-text">
+                A Mais Você Ebooks nasceu com o objetivo de transformar conhecimento em algo simples, acessível e direto. Criamos e-books digitais pensados para quem quer aprender sem perder tempo, com conteúdo organizado, linguagem clara e aplicação prática. Nosso compromisso é entregar materiais de qualidade, com acesso rápido e experiência simples para o leitor.
+            </p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3 class="feature-title">Movimento Constante</h3>
+                    <p class="feature-description">Transforme seu corpo e mente com rotinas de treino que se adaptam ao seu dia a dia.</p>
+                    <a href="produtos.html" class="feature-link">Confira nossos Ebooks ></a>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="feature-title">Nutrição com Sabor</h3>
+                    <p class="feature-description">Receitas práticas e deliciosas que provam que comer bem não precisa ser sem graça.</p>
+                    <a href="produtos.html" class="feature-link">Confira nossos Ebooks ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="promo-container">
+            <h2 class="promo-title">PROMOÇÃO RELÂMPAGO</h2>
+            <p class="promo-subtitle">Até 50% OFF em e-books selecionados</p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="categories-container">
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="category-name">Treinos</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="category-name">Nutrição</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="category-name">Saúde</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="category-name">Bem-estar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="products-container">
+            <h2 class="section-title">Todos os produtos</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-product-id="1">
+                    <div class="product-badge">NOVO</div>
+                    <div class="product-image">
+                        <div class="ebook-cover cover-saude-masculina">
+                            <div class="ebook-cover-content">
+                                <div class="ebook-cover-title">Saúde Masculina</div>
+                                <div class="ebook-cover-subtitle">Alta Performance</div>
+                                <div class="ebook-cover-price">R$5,00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <h3 class="product-title">eBook - Saúde Masculina em Alta Performance: Hormônios, Treino e Dieta</h3>
+                        <div class="product-price">
+                            <span class="price-original">R$10,00</span>
+                            <span class="price-discount">R$5,00</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart(1)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/10B981/FFFFFF?text=Emagrecimento" alt="Emagrecimento Inteligente">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Emagrecimento Inteligente: Estratégias para Perder Gordura de Verdade</h3>
+                        <div class="product-price">Preço R$25,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/F59E0B/FFFFFF?text=Mobilidade" alt="Mobilidade e Alongamento">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Mobilidade e Alongamento: Evite Lesões e Melhore o Desempenho</h3>
+                        <div class="product-price">Preço R$27,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/EF4444/FFFFFF?text=Hipertrofia" alt="Nutrição para Hipertrofia">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Nutrição para Hipertrofia: Como Comer para Crescer Naturalmente</h3>
+                        <div class="product-price">Preço R$135,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/8B5CF6/FFFFFF?text=Finanças" alt="Finanças para Iniciantes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Finanças para Iniciantes: Organize, Economize e Comece a Investir</h3>
+                        <div class="product-price">Preço R$138,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/06B6D4/FFFFFF?text=Treino+30+" alt="Treino para Homens Acima dos 30">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Treino para Homens Acima dos 30: Força, Energia e Vitalidade</h3>
+                        <div class="product-price">Preço R$50,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/84CC16/FFFFFF?text=Treino+Casa" alt="Treinamento em Casa">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Treinamento em Casa: Guia Completo para Transformar o Corpo Sem Academia</h3>
+                        <div class="product-price">Preço R$47,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/F97316/FFFFFF?text=Alimentação" alt="Alimentação Saudável">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Alimentação Saudável na Prática: Plano Completo para Emagrecer e Ganhar</h3>
+                        <div class="product-price">Preço R$43,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/EC4899/FFFFFF?text=Yoga" alt="Yoga para Iniciantes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Yoga para Iniciantes: Equilíbrio, Flexibilidade e Redução do Estresse</h3>
+                        <div class="product-price">Preço R$40,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/14B8A6/FFFFFF?text=Café+Manhã" alt="5 Cafés da Manhã">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - 5 Cafés da Manhã Leves para Secar Barriga</h3>
+                        <div class="product-price">Preço R$10,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/0EA5E9/FFFFFF?text=CrossFit" alt="CrossFit para Iniciantes">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - CrossFit para Iniciantes ao Intermediário: Força, Resistência</h3>
+                        <div class="product-price">Preço R$35,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/DC2626/FFFFFF?text=Lutas" alt="Guia de Lutas">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Guia de Lutas para Condicionamento: Boxe, Muay Thai e Jiu-Jitsu</h3>
+                        <div class="product-price">Preço R$90,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 13 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x400/7C3AED/FFFFFF?text=Funcional" alt="Treino Funcional">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">eBook - Treino Funcional: Método para Secar Gordura e Ganhar Massa Magra</h3>
+                        <div class="product-price">Preço R$28,00</div>
+                        <div class="product-actions">
+                            <button class="btn-quick-view">Visualização rápida</button>
+                            <button class="btn-buy">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">RECEBA OFERTAS EXCLUSIVAS</h2>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail">
+                <button type="submit" class="newsletter-btn">ASSINAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cart Float -->
+    <div class="cart-float">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Mais Você</h3>
+                    <p>Sua melhor versão começa aqui.</p>
+                </div>
+                <div class="footer-links">
+                    <ul class="footer-menu">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Loja</a></li>
+                        <li><a href="privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos.html">Termos e Condições</a></li>
+                        <li><a href="reembolso.html">Política de Reembolso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mais Você Ebooks. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/frontend.js"></script>
+</body>
+</html>

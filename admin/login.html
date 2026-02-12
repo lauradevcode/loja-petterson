@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo | Mais Você</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border: 1px solid #fcc;
+            font-size: 0.875rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border: 1px solid #cfc;
+            font-size: 0.875rem;
+            display: none;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: #ff6b9d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #feca57;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-logo">Mais Você</div>
+            <div class="login-subtitle">Painel Administrativo</div>
+        </div>
+
+        <div class="error-message" id="error-message">
+            Usuário ou senha incorretos
+        </div>
+
+        <div class="success-message" id="success-message">
+            Login realizado com sucesso!
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label class="form-label" for="username">Usuário</label>
+                <input type="text" id="username" class="form-input" required placeholder="Digite seu usuário">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Senha</label>
+                <input type="password" id="password" class="form-input" required placeholder="Digite sua senha">
+            </div>
+
+            <button type="submit" class="login-btn" id="login-btn">
+                Entrar
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="../index.html">← Voltar para o site</a>
+        </div>
+    </div>
+
+    <script>
+        // Credenciais padrão (em produção, use variáveis de ambiente)
+        const ADMIN_CREDENTIALS = {
+            username: 'admin',
+            password: 'maisvoce2024'
+        };
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('login-btn');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            
+            // Resetar mensagens
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Validar campos
+            if (!username || !password) {
+                errorMessage.textContent = 'Preencha todos os campos';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Mostrar loading
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="loading"></span> Autenticando...';
+            
+            // Simular delay de autenticação
+            setTimeout(() => {
+                // Verificar credenciais
+                if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                    // Salvar sessão
+                    sessionStorage.setItem('admin_logged_in', 'true');
+                    sessionStorage.setItem('admin_username', username);
+                    
+                    // Mostrar sucesso
+                    successMessage.style.display = 'block';
+                    
+                    // Redirecionar após 1 segundo
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    // Mostrar erro
+                    errorMessage.style.display = 'block';
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = 'Entrar';
+                    
+                    // Limpar campos
+                    document.getElementById('password').value = '';
+                    document.getElementById('password').focus();
+                }
+            }, 1500);
+        });
+
+        // Verificar se já está logado
+        window.addEventListener('load', () => {
+            if (sessionStorage.getItem('admin_logged_in') === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+        });
+
+        // Foco no primeiro campo
+        document.getElementById('username').focus();
+    </script>
+</body>
+</html>

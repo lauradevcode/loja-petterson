@@ -1,0 +1,240 @@
+/* Estilos para capas personalizadas dos e-books */
+
+.ebook-cover {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Capa 1 - Saúde Masculina */
+.cover-saude-masculina {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.cover-saude-masculina::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">💪</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 2 - Emagrecimento */
+.cover-emagrecimento {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.cover-emagrecimento::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">⚖️</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 3 - Mobilidade */
+.cover-mobilidade {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.cover-mobilidade::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🧘</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 4 - Hipertrofia */
+.cover-hipertrofia {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.cover-hipertrofia::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🏋️</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 5 - Finanças */
+.cover-financas {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.cover-financas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">💰</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 6 - Treino 30+ */
+.cover-treino-30 {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.cover-treino-30::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🎯</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 7 - Treino Casa */
+.cover-treino-casa {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.cover-treino-casa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🏠</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 8 - Alimentação */
+.cover-alimentacao {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.cover-alimentacao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🥗</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 9 - Yoga */
+.cover-yoga {
+    background: linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%);
+}
+
+.cover-yoga::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🕉️</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 10 - Café Manhã */
+.cover-cafe-manha {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.cover-cafe-manha::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">☕</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 11 - CrossFit */
+.cover-crossfit {
+    background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+}
+
+.cover-crossfit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🔥</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 12 - Lutas */
+.cover-lutas {
+    background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%);
+}
+
+.cover-lutas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">🥊</text></svg>') center/contain no-repeat;
+}
+
+/* Capa 13 - Funcional */
+.cover-funcional {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.cover-funcional::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.1)">⚡</text></svg>') center/contain no-repeat;
+}
+
+/* Conteúdo da capa */
+.ebook-cover-content {
+    position: relative;
+    z-index: 2;
+}
+
+.ebook-cover-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.ebook-cover-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.ebook-cover-price {
+    font-size: 2rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+}
