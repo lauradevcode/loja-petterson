@@ -213,8 +213,8 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: all 0.3s ease;
     border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .btn-continue-shopping:hover {
@@ -306,7 +306,7 @@
     color: white;
     border: none;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin | Mais Você</title>
+    <link rel="stylesheet" href="../components/design-system.css">
+    <link rel="stylesheet" href="../components/login-ux.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <h1>Painel Administrativo</h1>
+                <p>Mais Você Ebooks</p>
+            </div>
+            
+            <form class="admin-login-form" id="adminLoginForm" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label" for="admin-email">E-mail Administrativo</label>
+                    <input type="email" class="form-input" id="admin-email" required placeholder="admin@maisvocebooks.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="admin-password">Senha</label>
+                    <input type="password" class="form-input" id="admin-password" required placeholder="•••••••••">
+                </div>
+                
+                <button type="submit" class="btn-admin-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Entrar no Painel
+                </button>
+            </form>
+            
+            <div class="admin-login-footer">
+                <p>Área restrita para administradores</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-container"></div>
+
+    <script>
+        // Enhanced login handler with UX improvements
+        function showNotification(message, type) {
+            const notificationContainer = document.getElementById('notification-container');
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            notificationContainer.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            // Add loading state
+            const btn = event.target.querySelector('.btn-admin-login');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Autenticando...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                if (email && password) {
+                    localStorage.setItem('adminAuth', 'true');
+                    showNotification('Login realizado com sucesso! Redirecionando...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = '../pages/dashboard.html';
+                    }, 2000);
+                } else {
+                    showNotification('Por favor, preencha todos os campos', 'error');
+                    
+                    // Reset button
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                }
+            }, 1000);
+            
+            return false;
+        }
+
+        // Add fade out animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(20px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-focus on email field
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('admin-email').focus();
+        });
+    </script>
+</body>
+</html>
