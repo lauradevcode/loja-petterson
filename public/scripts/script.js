@@ -1,3 +1,5 @@
+// Script New - Mais Você Ebooks
+
 // Dados dos produtos
 const products = [
     {
@@ -36,6 +38,78 @@ const products = [
         price: 38.00,
         category: "financas",
         coverClass: "cover-financas"
+    },
+    {
+        id: 6,
+        name: "eBook - Dieta Low Carb: Guia Completo para Emagrecer com Saúde",
+        price: 30.00,
+        originalPrice: 45.00,
+        category: "nutricao",
+        coverClass: "cover-low-carb",
+        badge: "BESTSELLER"
+    },
+    {
+        id: 7,
+        name: "eBook - Treino em Casa: Programa Completo Sem Equipamentos",
+        price: 20.00,
+        category: "fitness",
+        coverClass: "cover-treino-casa"
+    },
+    {
+        id: 8,
+        name: "eBook - Meditação para Iniciantes: Guia Prático de Relaxamento",
+        price: 15.00,
+        category: "bem-estar",
+        coverClass: "cover-meditacao"
+    },
+    {
+        id: 9,
+        name: "eBook - Sono de Qualidade: Técnicas para um Descanso Perfeito",
+        price: 18.00,
+        category: "bem-estar",
+        coverClass: "cover-sono"
+    },
+    {
+        id: 10,
+        name: "eBook - Corrida de Rua: Como Correr Lesões e Melhorar Performance",
+        price: 22.00,
+        category: "fitness",
+        coverClass: "cover-corrida"
+    },
+    {
+        id: 11,
+        name: "eBook - Yoga para Estresse: Posturas e Exercícios para Relaxar",
+        price: 17.00,
+        category: "bem-estar",
+        coverClass: "cover-yoga"
+    },
+    {
+        id: 12,
+        name: "eBook - Alimentação Saudável: Hábitos para uma Vida Melhor",
+        price: 28.00,
+        category: "nutricao",
+        coverClass: "cover-alimentacao"
+    },
+    {
+        id: 13,
+        name: "eBook - Musculação para Iniciantes: Guia Passo a Passo",
+        price: 32.00,
+        category: "fitness",
+        coverClass: "cover-musculacao"
+    },
+    {
+        id: 14,
+        name: "eBook - Controle de Ansiedade: Técnicas para Calmar a Mente",
+        price: 23.00,
+        category: "bem-estar",
+        coverClass: "cover-ansiedade"
+    },
+    {
+        id: 15,
+        name: "eBook - Produtividade Máxima: Como Fazer Mais em Menos Tempo",
+        price: 26.00,
+        category: "desenvolvimento",
+        coverClass: "cover-produtividade"
     }
 ];
 
@@ -51,320 +125,144 @@ function updateCartCount() {
     }
 }
 
-// Adicionar produto ao carrinho
+// Função para renderizar produtos
+function renderProducts(productsToRender = products) {
+    const productsGrid = document.querySelector('.products-grid');
+    
+    if (!productsGrid) return;
+    
+    productsGrid.innerHTML = productsToRender.map(product => {
+        const title = product.name.split(' - ')[1]?.split(':')[0] || 'Ebook';
+        const subtitle = product.name.split(':')[1]?.trim() || '';
+        
+        return `
+        <div class="product-card">
+            <div class="product-image ${product.coverClass}">
+                <div class="ebook-cover-content">
+                    <div class="ebook-cover-title">${title}</div>
+                    <div class="ebook-cover-subtitle">${subtitle}</div>
+                    <div class="ebook-cover-price">R$${product.price.toFixed(2)}</div>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-price">
+                    ${product.originalPrice ? 
+                        `<span style="text-decoration: line-through; color: var(--gray-400); font-size: 0.875rem;">R$ ${product.originalPrice.toFixed(2)}</span>
+                        <span>R$ ${product.price.toFixed(2)}</span>` :
+                        `<span>R$ ${product.price.toFixed(2)}</span>`
+                    }
+                </div>
+                <button class="btn-add-cart" onclick="addToCart(${product.id})">
+                    <i class="fas fa-shopping-cart"></i>
+                    Adicionar
+                </button>
+            </div>
+            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+        </div>
+        `;
+    }).join('');
+}
+
+// Adicionar ao carrinho
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-
+    
     const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity++;
     } else {
         cart.push({
             ...product,
             quantity: 1
         });
     }
-
+    
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     
-    // Mostrar notificação simples
+    // Feedback visual
     showNotification('Produto adicionado ao carrinho!');
 }
 
-// Remover produto do carrinho
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    renderCart();
-}
-
-// Atualizar quantidade
-function updateQuantity(productId, quantity) {
-    const item = cart.find(item => item.id === productId);
-    if (item) {
-        item.quantity = parseInt(quantity);
-        if (item.quantity <= 0) {
-            removeFromCart(productId);
-        } else {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-        }
-    }
-}
-
-// Calcular total
-function calculateTotal() {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-}
-
-// Renderizar produtos
-function renderProducts(containerId, productsToShow = products) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    container.innerHTML = productsToShow.map(product => `
-        <div class="product-card" data-product-id="${product.id}">
-            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-            <div class="product-image">
-                <div class="ebook-cover ${product.coverClass}">
-                    <div class="ebook-cover-content">
-                        <div class="ebook-cover-title">${product.name.split(' - ')[1]?.split(':')[0] || 'Ebook'}</div>
-                        <div class="ebook-cover-subtitle">${product.name.split(':')[1]?.trim() || ''}</div>
-                        <div class="ebook-cover-price">R$${product.price.toFixed(2)}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="rating">
-                    <i class="fas fa-star star"></i>
-                    <i class="fas fa-star star"></i>
-                    <i class="fas fa-star star"></i>
-                    <i class="fas fa-star star"></i>
-                    <i class="fas fa-star star"></i>
-                </div>
-                <h3 class="product-title">${product.name}</h3>
-                <div class="product-price">
-                    ${product.originalPrice ? `<span class="price-original">R$${product.originalPrice.toFixed(2)}</span>` : ''}
-                    <span class="price-discount">R$${product.price.toFixed(2)}</span>
-                </div>
-                <div class="product-actions">
-                    <button class="btn-add-cart" onclick="addToCart(${product.id})">Adicionar ao Carrinho</button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Renderizar carrinho
-function renderCart() {
-    const container = document.getElementById('cart-items-container');
-    const emptyMessage = document.getElementById('cart-empty');
-    const subtotal = document.getElementById('cart-subtotal');
-    const total = document.getElementById('cart-total');
-
-    if (!container) return;
-
-    if (cart.length === 0) {
-        container.style.display = 'none';
-        if (emptyMessage) emptyMessage.style.display = 'block';
-        if (subtotal) subtotal.textContent = 'R$ 0,00';
-        if (total) total.textContent = 'R$ 0,00';
-        return;
-    }
-
-    container.style.display = 'block';
-    if (emptyMessage) emptyMessage.style.display = 'none';
-
-    container.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <div class="cart-item-image">
-                <div class="ebook-cover ${item.coverClass}" style="width: 80px; height: 100px;">
-                    <div class="ebook-cover-content">
-                        <div class="ebook-cover-price">R$${item.price.toFixed(2)}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-item-details">
-                <h4>${item.name}</h4>
-                <div class="cart-item-price">R$${item.price.toFixed(2)}</div>
-            </div>
-            <div class="cart-item-quantity">
-                <input type="number" value="${item.quantity}" min="1" max="99" 
-                       onchange="updateQuantity(${item.id}, this.value)">
-            </div>
-            <div class="cart-item-total">R$${(item.price * item.quantity).toFixed(2)}</div>
-            <button class="btn-remove" onclick="removeFromCart(${item.id})">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
-    `).join('');
-
-    const totalAmount = calculateTotal();
-    if (subtotal) subtotal.textContent = `R$ ${totalAmount.toFixed(2)}`;
-    if (total) total.textContent = `R$ ${totalAmount.toFixed(2)}`;
-}
-
-// Notificação simples
+// Mostrar notificação
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.textContent = message;
     notification.style.cssText = `
         position: fixed;
-        top: 100px;
+        top: 20px;
         right: 20px;
-        background: #ff6b9d;
+        background: var(--primary-500);
         color: white;
         padding: 1rem 1.5rem;
-        border-radius: 4px;
-        z-index: 3000;
-        font-weight: 600;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        z-index: 9999;
+        animation: slideIn 0.3s ease-out;
+        font-family: var(--font-primary);
+        font-weight: var(--font-medium);
     `;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.remove();
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
     }, 3000);
 }
 
-// Filtros
-function setupFilters() {
-    const categoryFilter = document.getElementById('category-filter');
-    const sortFilter = document.getElementById('sort-filter');
-
-    if (!categoryFilter || !sortFilter) return;
-
-    function applyFilters() {
-        let filtered = [...products];
-
-        // Filtro por categoria
-        const category = categoryFilter.value;
-        if (category) {
-            filtered = filtered.filter(p => p.category === category);
+// Adicionar animações de notificação
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
         }
-
-        // Ordenação
-        const sort = sortFilter.value;
-        switch (sort) {
-            case 'name':
-                filtered.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case 'price-asc':
-                filtered.sort((a, b) => a.price - b.price);
-                break;
-            case 'price-desc':
-                filtered.sort((a, b) => b.price - a.price);
-                break;
+        to {
+            transform: translateX(0);
+            opacity: 1;
         }
-
-        renderProducts('all-products', filtered);
     }
-
-    categoryFilter.addEventListener('change', applyFilters);
-    sortFilter.addEventListener('change', applyFilters);
-}
-
-// Checkout
-function setupCheckout() {
-    const checkoutBtn = document.getElementById('btn-checkout');
-    const modal = document.getElementById('checkout-modal');
-    const modalClose = document.getElementById('modal-close');
-    const checkoutForm = document.getElementById('checkout-form');
-
-    if (!checkoutBtn || !modal) return;
-
-    checkoutBtn.addEventListener('click', () => {
-        if (cart.length === 0) {
-            showNotification('Seu carrinho está vazio!');
-            return;
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
         }
-
-        // Renderizar resumo do pedido
-        const orderItems = document.getElementById('order-items');
-        const orderTotal = document.getElementById('order-total-amount');
-
-        if (orderItems) {
-            orderItems.innerHTML = cart.map(item => `
-                <div class="order-item">
-                    <div>${item.name}</div>
-                    <div>${item.quantity}x R$${item.price.toFixed(2)}</div>
-                </div>
-            `).join('');
+        to {
+            transform: translateX(100%);
+            opacity: 0;
         }
-
-        if (orderTotal) {
-            orderTotal.textContent = `R$ ${calculateTotal().toFixed(2)}`;
-        }
-
-        modal.style.display = 'block';
-    });
-
-    if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
     }
-
-    if (checkoutForm) {
-        checkoutForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const orderData = {
-                action: 'create_payment',
-                customer_name: document.getElementById('customer-name').value,
-                customer_email: document.getElementById('customer-email').value,
-                customer_cpf: document.getElementById('customer-cpf').value,
-                customer_phone: document.getElementById('customer-phone').value,
-                items: cart.map(item => ({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity
-                }))
-            };
-
-            try {
-                showNotification('Processando pagamento...');
-                
-                const response = await fetch('/api/pagseguro.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(orderData)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    // Limpar carrinho
-                    cart = [];
-                    localStorage.removeItem('cart');
-                    updateCartCount();
-                    
-                    // Redirecionar para PagSeguro
-                    window.location.href = result.payment_url;
-                } else {
-                    showNotification('Erro ao processar pagamento: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Payment error:', error);
-                showNotification('Erro ao processar pagamento. Tente novamente.');
-            }
-        });
+    
+    .product-badge {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: var(--radius-full);
+        font-size: 0.625rem;
+        font-weight: var(--font-bold);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        z-index: 10;
     }
+`;
+document.head.appendChild(style);
 
-    // Fechar modal clicando fora
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-}
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
+// Inicializar
+document.addEventListener('DOMContentLoaded', function() {
     updateCartCount();
-    
-    // Carregar produtos na página inicial
-    if (document.getElementById('featured-products')) {
-        renderProducts('featured-products', products.slice(0, 3));
-    }
-    
-    // Carregar todos os produtos
-    if (document.getElementById('all-products')) {
-        renderProducts('all-products');
-        setupFilters();
-    }
-    
-    // Configurar carrinho
-    if (document.getElementById('cart-items-container')) {
-        renderCart();
-        setupCheckout();
-    }
+    renderProducts();
 });

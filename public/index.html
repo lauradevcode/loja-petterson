@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mais Você Ebooks</title>
+    <link rel="stylesheet" href="styles/design-system.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/estilo-loja.css">
-    <link rel="stylesheet" href="assets/css/capas.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <!-- Header -->
@@ -16,14 +18,17 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html">Mais Você</a>
+                    <a href="index.html" class="nav-logo-link">MAIS VOCÊ EBOOKS</a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#hero" class="nav-link active">Início</a>
+                        <a href="index.html" class="nav-link active">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#products" class="nav-link">Produtos</a>
+                        <a href="produtos.html" class="nav-link">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="carrinho.html" class="nav-link">Carrinho</a>
                     </li>
                 </ul>
                 <div class="nav-cart">
@@ -79,7 +84,7 @@
     <section id="products" class="products">
         <div class="products-container">
             <h2 class="section-title">Produtos em Destaque</h2>
-            <div class="products-grid" id="featured-products">
+            <div class="products-grid">
                 <!-- Products will be loaded here -->
             </div>
             <div class="view-all-container">
@@ -104,59 +109,6 @@
     </footer>
 
     <script src="scripts/script.js"></script>
-    <script>
-        // Smooth scrolling para navegação por âncoras
-        document.addEventListener('DOMContentLoaded', function() {
-            // Links da navegação
-            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    
-                    if (targetSection) {
-                        // Scroll suave para a seção
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Atualizar link ativo
-                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Observador de seções para atualizar navegação ativa
-            const sections = document.querySelectorAll('section[id]');
-            const observerOptions = {
-                root: null,
-                rootMargin: '-100px 0px',
-                threshold: 0.1
-            };
-            
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                        
-                        if (correspondingLink) {
-                            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                            correspondingLink.classList.add('active');
-                        }
-                    }
-                });
-            }, observerOptions);
-            
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-        });
-    </script>
+    <script src="scripts/cart-fixed.js"></script>
 </body>
 </html>

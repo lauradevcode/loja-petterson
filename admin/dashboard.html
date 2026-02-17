@@ -3,381 +3,1116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin | Mais Você</title>
+    <title>Dashboard - Mais Você Ebooks</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Space Grotesk', sans-serif;
+            
+            /* Font Sizes */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            /* Font Weights */
+            --font-light: 300;
+            --font-normal: 400;
+            --font-medium: 500;
+            --font-semibold: 600;
+            --font-bold: 700;
+            --font-extrabold: 800;
+            
+            /* Line Heights */
+            --leading-tight: 1.25;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.75;
+            
+            /* Colors - Primary */
+            --primary-50: #fff5f7;
+            --primary-100: #ffe0e6;
+            --primary-200: #ffc1d1;
+            --primary-300: #ff9fb3;
+            --primary-400: #ff7a94;
+            --primary-500: #ff6b9d;
+            --primary-600: #e85a8c;
+            --primary-700: #d6497c;
+            --primary-800: #c2367d;
+            --primary-900: #9f2647;
+            
+            /* Colors - Secondary */
+            --secondary-50: #fffbeb;
+            --secondary-100: #fef3c7;
+            --secondary-200: #fde68a;
+            --secondary-300: #fcd34d;
+            --secondary-400: #fbbf24;
+            --secondary-500: #feca57;
+            --secondary-600: #f59e0b;
+            --secondary-700: #d97706;
+            --secondary-800: #b45309;
+            --secondary-900: #92400e;
+            
+            /* Colors - Gray */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Colors - Semantic */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f5f5f5;
-            color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-primary);
+            background: #f8fafc;
+            color: #1a202c;
         }
 
-        .admin-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .admin-dashboard {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Header */
         .admin-header {
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .admin-header h1 {
-            color: #ff6b9d;
-            margin-bottom: 0.5rem;
+        /* Main Layout */
+        .admin-main {
+            display: flex;
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        .admin-header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .admin-logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .btn-logout {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* Main Layout */
+        .admin-main {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar */
+        .admin-sidebar {
+            width: 260px;
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 2rem 0;
         }
 
         .admin-nav {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .nav-btn {
-            padding: 0.5rem 1rem;
-            background: #ff6b9d;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: #ff5a8c;
-        }
-
-        .nav-btn.active {
-            background: #1a1a1a;
-        }
-
-        .admin-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: none;
-        }
-
-        .admin-section.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
+        .nav-item {
             margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             font-weight: 500;
         }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            font-family: inherit;
+        .nav-link:hover {
+            background: #f7fafc;
+            color: #2d3748;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn-primary {
-            background: #ff6b9d;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
+        .nav-link.active {
+            background: #edf2f7;
+            color: #2b6cb0;
             font-weight: 600;
-            transition: background 0.3s;
         }
 
-        .btn-primary:hover {
-            background: #ff5a8c;
+        .nav-link i {
+            width: 20px;
+            text-align: center;
         }
 
-        .products-list {
-            margin-top: 2rem;
+        /* Content */
+        .admin-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
         }
 
-        .product-item {
+        .content-header {
+            margin-bottom: 2rem;
+        }
+
+        .content-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-subtitle {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .stat-title {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.875rem;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-icon.sales {
+            background: #10b981;
+            color: white;
+        }
+
+        .stat-icon.orders {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .stat-icon.products {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .stat-icon.users {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .stat-change.positive {
+            color: #10b981;
+        }
+
+        .stat-change.negative {
+            color: #ef4444;
+        }
+
+        /* Sales Table */
+        .sales-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .product-info h4 {
-            margin-bottom: 0.5rem;
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
         }
 
-        .product-price {
-            color: #ff6b9d;
-            font-weight: 600;
-        }
-
-        .btn-danger {
-            background: #ff4444;
+        .btn-export {
+            background: #3b82f6;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-weight: 500;
             cursor: pointer;
-            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-danger:hover {
-            background: #cc0000;
+        .btn-export:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
         }
 
-        .message {
+        .sales-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .sales-table th {
+            background: #f8fafc;
             padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .sales-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .sales-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-badge.completed {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-badge.pending {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .status-badge.cancelled {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* E-books Section */
+        .ebooks-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-add-ebook {
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add-ebook:hover {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            transform: translateY(-1px);
+        }
+
+        .ebook-form {
+            margin-top: 2rem;
+        }
+
+        .form-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+            transform: translateY(-1px);
+        }
+
+        .ebooks-list {
+            margin-top: 2rem;
+        }
+
+        .ebooks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .ebooks-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .ebooks-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .ebooks-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .ebook-cover {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
             border-radius: 4px;
-            margin-bottom: 1rem;
         }
 
-        .message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .ebook-actions {
+            display: flex;
+            gap: 0.5rem;
         }
 
-        .message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        .btn-edit, .btn-delete {
+            padding: 0.25rem 0.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #2563eb;
+        }
+
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #dc2626;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-content {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        <div class="admin-header">
-            <h1>Painel Administrativo</h1>
-            <p>Gerencie seus ebooks e pedidos</p>
-            
-            <div class="admin-nav">
-                <button class="nav-btn active" onclick="showSection('products')">Produtos</button>
-                <button class="nav-btn" onclick="showSection('orders')">Pedidos</button>
-                <button class="nav-btn" onclick="showSection('upload')">Upload Ebook</button>
+    <div class="admin-dashboard">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <div class="admin-logo">
+                    <h1>MAIS VOCÊ EBOOKS</h1>
+                </div>
+                <div class="admin-user">
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span class="user-name">Admin</span>
+                    </div>
+                    <button class="btn-logout" id="btnLogout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </button>
+                </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Produtos -->
-        <div id="products" class="admin-section active">
-            <h2>Gerenciar Produtos</h2>
-            
-            <form id="product-form">
-                <div class="form-group">
-                    <label for="product-name">Nome do Ebook:</label>
-                    <input type="text" id="product-name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="product-price">Preço:</label>
-                    <input type="number" id="product-price" step="0.01" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="product-category">Categoria:</label>
-                    <select id="product-category" required>
-                        <option value="">Selecione...</option>
-                        <option value="saude">Saúde</option>
-                        <option value="fitness">Fitness</option>
-                        <option value="nutricao">Nutrição</option>
-                        <option value="financas">Finanças</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="product-description">Descrição:</label>
-                    <textarea id="product-description"></textarea>
-                </div>
-                
-                <button type="submit" class="btn-primary">Adicionar Produto</button>
-            </form>
-            
-            <div class="products-list" id="products-list">
-                <!-- Products will be loaded here -->
+        <main class="admin-main">
+            <!-- Sidebar -->
+            <nav class="admin-sidebar">
+                <ul class="admin-nav">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active">
+                            <i class="fas fa-chart-line"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ebooks" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            E-books
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sales" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            Vendas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#users" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            Usuários
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="dashboard-section">
+                    <div class="content-header">
+                        <h2 class="content-title">Visão Geral</h2>
+                        <p class="content-subtitle">Resumo das vendas e métricas do sistema</p>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Vendas Totais</span>
+                                <div class="stat-icon sales">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <div class="stat-value">R$ 45.678,90</div>
+                            <div class="stat-change positive">+12.5% este mês</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Pedidos</span>
+                                <div class="stat-icon orders">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                            </div>
+                            <div class="stat-value">1.234</div>
+                            <div class="stat-change positive">+8.3% este mês</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">E-books Vendidos</span>
+                                <div class="stat-icon products">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                            </div>
+                            <div class="stat-value">3.456</div>
+                            <div class="stat-change positive">+15.2% este mês</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <span class="stat-title">Clientes Ativos</span>
+                                <div class="stat-icon users">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="stat-value">892</div>
+                            <div class="stat-change positive">+5.7% este mês</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- E-books Section -->
+                <section id="ebooks" class="ebooks-section" style="display: none;">
+                    <div class="section-header">
+                        <h2 class="section-title">Gerenciar E-books</h2>
+                        <button class="btn-add-ebook" onclick="showAddEbookForm()">
+                            <i class="fas fa-plus"></i>
+                            Novo E-book
+                        </button>
+                    </div>
+
+                    <!-- Add E-book Form -->
+                    <div id="addEbookForm" class="ebook-form" style="display: none;">
+                        <div class="form-card">
+                            <h3 class="form-title">Adicionar Novo E-book</h3>
+                            <form id="ebookUploadForm" onsubmit="handleEbookUpload(event)">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Título</label>
+                                        <input type="text" class="form-input" id="ebookTitle" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Autor</label>
+                                        <input type="text" class="form-input" id="ebookAuthor" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Categoria</label>
+                                        <select class="form-input" id="ebookCategory" required>
+                                            <option value="">Selecione...</option>
+                                            <option value="saude">Saúde</option>
+                                            <option value="fitness">Fitness</option>
+                                            <option value="bem-estar">Bem-estar</option>
+                                            <option value="financas">Finanças</option>
+                                            <option value="produtividade">Produtividade</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Preço</label>
+                                        <input type="number" class="form-input" id="ebookPrice" step="0.01" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Descrição</label>
+                                        <textarea class="form-input" id="ebookDescription" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Capa do E-book</label>
+                                        <input type="file" class="form-input" id="ebookCover" accept="image/*" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Arquivo do E-book</label>
+                                        <input type="file" class="form-input" id="ebookFile" accept=".pdf,.epub,.mobi" required>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        Salvar E-book
+                                    </button>
+                                    <button type="button" class="btn-secondary" onclick="hideAddEbookForm()">
+                                        <i class="fas fa-times"></i>
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- E-books List -->
+                    <div class="ebooks-list">
+                        <table class="ebooks-table">
+                            <thead>
+                                <tr>
+                                    <th>Capa</th>
+                                    <th>Título</th>
+                                    <th>Autor</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ebooksTableBody">
+                                <!-- E-books will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Sales Section -->
+                <section id="sales" class="sales-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Vendas Detalhadas</h2>
+                        <button class="btn-export" onclick="exportSales()">
+                            <i class="fas fa-download"></i>
+                            Exportar Relatório
+                        </button>
+                    </div>
+
+                    <table class="sales-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Produto</th>
+                                <th>Valor</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#001</td>
+                                <td>João Silva</td>
+                                <td>Dieta Low Carb</td>
+                                <td>R$ 30,00</td>
+                                <td>17/02/2024</td>
+                                <td><span class="status-badge completed">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>Maria Santos</td>
+                                <td>Emagrecimento Inteligente</td>
+                                <td>R$ 25,00</td>
+                                <td>17/02/2024</td>
+                                <td><span class="status-badge completed">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>#003</td>
+                                <td>Carlos Oliveira</td>
+                                <td>Saúde Masculina</td>
+                                <td>R$ 5,00</td>
+                                <td>17/02/2024</td>
+                                <td><span class="status-badge completed">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>#004</td>
+                                <td>Ana Costa</td>
+                                <td>Mobilidade e Alongamento</td>
+                                <td>R$ 27,00</td>
+                                <td>16/02/2024</td>
+                                <td><span class="status-badge completed">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>#005</td>
+                                <td>Pedro Lima</td>
+                                <td>Nutrição para Hipertrofia</td>
+                                <td>R$ 35,00</td>
+                                <td>16/02/2024</td>
+                                <td><span class="status-badge pending">Pendente</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
             </div>
-        </div>
-
-        <!-- Pedidos -->
-        <div id="orders" class="admin-section">
-            <h2>Pedidos Recentes</h2>
-            <div id="orders-list">
-                <!-- Orders will be loaded here -->
-            </div>
-        </div>
-
-        <!-- Upload -->
-        <div id="upload" class="admin-section">
-            <h2>Upload de Ebook</h2>
-            <form id="upload-form">
-                <div class="form-group">
-                    <label for="ebook-file">Arquivo do Ebook (PDF/EPUB):</label>
-                    <input type="file" id="ebook-file" accept=".pdf,.epub,.mobi" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="ebook-cover">Capa (Imagem):</label>
-                    <input type="file" id="ebook-cover" accept="image/*">
-                </div>
-                
-                <div class="form-group">
-                    <label for="ebook-product">Produto:</label>
-                    <select id="ebook-product" required>
-                        <option value="">Selecione um produto...</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn-primary">Fazer Upload</button>
-            </form>
-        </div>
+        </main>
     </div>
 
     <script>
-        // Mock data - em produção viria do banco
-        let products = [
-            { id: 1, name: "Saúde Masculina em Alta Performance", price: 5.00, category: "saude" },
-            { id: 2, name: "Emagrecimento Inteligente", price: 25.00, category: "nutricao" }
+        // Forçar carregamento da nova versão
+        console.log('Dashboard v2.0 - Carregado em:', new Date().toISOString());
+        
+        // Verificar autenticação
+        if (!localStorage.getItem('adminAuth')) {
+            console.log('Usuário não autenticado, redirecionando para login...');
+            window.location.href = 'login.html';
+        }
+
+        // Logout
+        document.getElementById('btnLogout').addEventListener('click', function() {
+            console.log('Logout acionado');
+            localStorage.removeItem('adminAuth');
+            window.location.href = 'login.html';
+        });
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hide all sections
+                document.querySelectorAll('.dashboard-section, .ebooks-section, .sales-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Remove active from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+
+        // E-books Management
+        let ebooks = JSON.parse(localStorage.getItem('ebooks')) || [
+            {
+                id: 1,
+                title: 'Dieta Low Carb',
+                author: 'João Silva',
+                category: 'saude',
+                price: 30.00,
+                description: 'Guia completo sobre dieta low carb',
+                cover: 'https://via.placeholder.com/50x70/ff6b9d/ffffff?text=DIETA',
+                status: 'ativo'
+            },
+            {
+                id: 2,
+                title: 'Emagrecimento Inteligente',
+                author: 'Maria Santos',
+                category: 'saude',
+                price: 25.00,
+                description: 'Perca peso de forma saudável',
+                cover: 'https://via.placeholder.com/50x70/10b981/ffffff?text=EMAG',
+                status: 'ativo'
+            }
         ];
 
-        let orders = [
-            { id: 1, customer: "João Silva", total: 30.00, status: "Aguardando", date: "16/02/2026" },
-            { id: 2, customer: "Maria Santos", total: 50.00, status: "Pago", date: "15/02/2026" }
-        ];
-
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.admin-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active from all nav buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-            
-            // Load data for section
-            if (sectionId === 'products') {
-                loadProducts();
-            } else if (sectionId === 'orders') {
-                loadOrders();
-            } else if (sectionId === 'upload') {
-                loadProductSelect();
-            }
+        function showAddEbookForm() {
+            document.getElementById('addEbookForm').style.display = 'block';
         }
 
-        function loadProducts() {
-            const container = document.getElementById('products-list');
-            container.innerHTML = products.map(product => `
-                <div class="product-item">
-                    <div class="product-info">
-                        <h4>${product.name}</h4>
-                        <span class="product-price">R$${product.price.toFixed(2)}</span>
-                        <small>Categoria: ${product.category}</small>
-                    </div>
-                    <button class="btn-danger" onclick="deleteProduct(${product.id})">
-                        <i class="fas fa-trash"></i> Excluir
-                    </button>
-                </div>
-            `).join('');
+        function hideAddEbookForm() {
+            document.getElementById('addEbookForm').style.display = 'none';
+            document.getElementById('ebookUploadForm').reset();
         }
 
-        function loadOrders() {
-            const container = document.getElementById('orders-list');
-            container.innerHTML = orders.map(order => `
-                <div class="product-item">
-                    <div class="product-info">
-                        <h4>Pedido #${order.id}</h4>
-                        <p>Cliente: ${order.customer}</p>
-                        <span class="product-price">R$${order.total.toFixed(2)}</span>
-                        <small>Status: ${order.status} | ${order.date}</small>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadProductSelect() {
-            const select = document.getElementById('ebook-product');
-            select.innerHTML = '<option value="">Selecione um produto...</option>' +
-                products.map(product => `
-                    <option value="${product.id}">${product.name}</option>
-                `).join('');
-        }
-
-        function deleteProduct(productId) {
-            if (confirm('Tem certeza que deseja excluir este produto?')) {
-                products = products.filter(p => p.id !== productId);
-                loadProducts();
-                showMessage('Produto excluído com sucesso!', 'success');
-            }
-        }
-
-        function showMessage(message, type) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${type}`;
-            messageDiv.textContent = message;
+        function handleEbookUpload(event) {
+            event.preventDefault();
             
-            document.querySelector('.admin-container').insertBefore(
-                messageDiv, 
-                document.querySelector('.admin-header').nextSibling
-            );
+            const title = document.getElementById('ebookTitle').value;
+            const author = document.getElementById('ebookAuthor').value;
+            const category = document.getElementById('ebookCategory').value;
+            const price = parseFloat(document.getElementById('ebookPrice').value);
+            const description = document.getElementById('ebookDescription').value;
+            const coverFile = document.getElementById('ebookCover').files[0];
+            const ebookFile = document.getElementById('ebookFile').files[0];
             
-            setTimeout(() => messageDiv.remove(), 3000);
-        }
-
-        // Form submissions
-        document.getElementById('product-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const newProduct = {
-                id: products.length + 1,
-                name: document.getElementById('product-name').value,
-                price: parseFloat(document.getElementById('product-price').value),
-                category: document.getElementById('product-category').value
+            const newEbook = {
+                id: ebooks.length + 1,
+                title,
+                author,
+                category,
+                price,
+                description,
+                cover: coverFile ? URL.createObjectURL(coverFile) : `https://via.placeholder.com/50x70/ff6b9d/ffffff?text=${title.substring(0, 4).toUpperCase()}`,
+                status: 'ativo'
             };
             
-            products.push(newProduct);
-            loadProducts();
-            e.target.reset();
-            showMessage('Produto adicionado com sucesso!', 'success');
-        });
+            ebooks.push(newEbook);
+            localStorage.setItem('ebooks', JSON.stringify(ebooks));
+            
+            renderEbooksTable();
+            hideAddEbookForm();
+            
+            alert('E-book adicionado com sucesso!');
+        }
 
-        document.getElementById('upload-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            showMessage('Upload simulado - em produção faria upload real!', 'success');
-            e.target.reset();
-        });
+        function renderEbooksTable() {
+            const tbody = document.getElementById('ebooksTableBody');
+            tbody.innerHTML = '';
+            
+            ebooks.forEach(ebook => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <img src="${ebook.cover}" alt="${ebook.title}" class="ebook-cover">
+                    </td>
+                    <td>${ebook.title}</td>
+                    <td>${ebook.author}</td>
+                    <td>${ebook.category}</td>
+                    <td>R$ ${ebook.price.toFixed(2)}</td>
+                    <td><span class="status-badge completed">${ebook.status}</span></td>
+                    <td>
+                        <div class="ebook-actions">
+                            <button class="btn-edit" onclick="editEbook(${ebook.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-delete" onclick="deleteEbook(${ebook.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
 
-        // Load initial data
-        loadProducts();
+        function editEbook(id) {
+            alert('Funcionalidade de edição em desenvolvimento');
+        }
+
+        function deleteEbook(id) {
+            if (confirm('Tem certeza que deseja excluir este e-book?')) {
+                ebooks = ebooks.filter(ebook => ebook.id !== id);
+                localStorage.setItem('ebooks', JSON.stringify(ebooks));
+                renderEbooksTable();
+                alert('E-book excluído com sucesso!');
+            }
+        }
+
+        // Initialize e-books table
+        renderEbooksTable();
+
+        // Export Sales Function
+        function exportSales() {
+            console.log('Exportando vendas...');
+            const salesData = [
+                { id: '#001', customer: 'João Silva', product: 'Dieta Low Carb', value: 'R$ 30,00', date: '17/02/2024', status: 'Concluído' },
+                { id: '#002', customer: 'Maria Santos', product: 'Emagrecimento Inteligente', value: 'R$ 25,00', date: '17/02/2024', status: 'Concluído' },
+                { id: '#003', customer: 'Carlos Oliveira', product: 'Saúde Masculina', value: 'R$ 5,00', date: '17/02/2024', status: 'Concluído' },
+                { id: '#004', customer: 'Ana Costa', product: 'Mobilidade e Alongamento', value: 'R$ 27,00', date: '16/02/2024', status: 'Concluído' },
+                { id: '#005', customer: 'Pedro Lima', product: 'Nutrição para Hipertrofia', value: 'R$ 35,00', date: '16/02/2024', status: 'Pendente' }
+            ];
+
+            // Criar CSV
+            let csv = 'ID,Cliente,Produto,Valor,Data,Status\n';
+            salesData.forEach(sale => {
+                csv += `${sale.id},"${sale.customer}","${sale.product}","${sale.value}","${sale.date}","${sale.status}"\n`;
+            });
+
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'vendas_' + new Date().toISOString().split('T')[0] + '.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     </script>
 </body>
 </html>

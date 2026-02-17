@@ -4,7 +4,7 @@ class DashboardController {
         this.currentSection = 'dashboard';
         this.editingEbook = null;
         this.currentPage = 1;
-        this.itemsPerPage = 6;
+        this.itemsPerPage = 5;
         this.init();
     }
 
@@ -340,6 +340,9 @@ class DashboardController {
                         <button class="btn-edit" onclick="dashboardController.openModal(${JSON.stringify(ebook).replace(/"/g, '&quot;')})">
                             <i class="fas fa-edit"></i> Editar
                         </button>
+                        <button class="btn-cart" onclick="dashboardController.addToCart(${ebook.id})">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </button>
                         <button class="btn-delete" onclick="dashboardController.deleteEbook(${ebook.id})">
                             <i class="fas fa-trash"></i> Excluir
                         </button>
@@ -414,15 +417,41 @@ class DashboardController {
     }
 
     async deleteEbook(id) {
-        if (confirm('Tem certeza que deseja excluir este e-book?')) {
-            try {
-                await ebooksService.delete(id);
-                this.showNotification('E-book excluído com sucesso!');
-                this.loadEbooks();
-            } catch (error) {
-                this.showNotification('Erro ao excluir e-book', 'error');
-            }
+        if (!confirm('Tem certeza que deseja excluir este e-book?')) {
+            return;
         }
+        
+        try {
+            await ebooksService.delete(id);
+            this.showNotification('E-book excluído com sucesso!');
+            this.loadEbooks();
+        } catch (error) {
+            this.showNotification('Erro ao excluir e-book', 'error');
+        }
+    }
+
+    addToCart(id) {
+        const ebook = ebooksService.getById(id);
+        if (!ebook) return;
+        
+        // Adiciona ao carrinho (simulação)
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const existingItem = cart.find(item => item.id === id);
+        
+        if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({
+                id: ebook.id,
+                title: ebook.title,
+                price: ebook.price,
+                quantity: 1,
+                image: ebook.image
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.showNotification(`${ebook.title} adicionado ao carrinho!`, 'success');
     }
 
     showNotification(message, type = 'success') {

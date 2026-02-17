@@ -10,36 +10,6 @@ class EbooksService {
             return JSON.parse(saved);
         }
         
-        // Cover Styles
-        // .cover-saude-masculina {
-        //     background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-600) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
-
-        // .cover-emagrecimento {
-        //     background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
-
-        // .cover-mobilidade {
-        //     background: linear-gradient(135deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
-
-        // .cover-dieta {
-        //     background: linear-gradient(135deg, var(--warning) 0%, var(--secondary-600) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
-
-        // .cover-financas {
-        //     background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-700) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
-
-        // .cover-bem-estar {
-        //     background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-500) 100%);
-        //     transition: transform 0.3s ease, box-shadow 0.3s ease;
-        // }
 
         // Mock data
         return [
@@ -128,6 +98,50 @@ class EbooksService {
                 image: null,
                 category: 'Finanças',
                 pages: 130,
+                format: 'PDF',
+                delivery: 'E-mail automático após pagamento'
+            },
+            {
+                id: 9,
+                title: 'Musculação para Iniciantes',
+                price: 22.00,
+                description: 'Guia completo para iniciantes em musculação com exercícios básicos e plano de treino progressivo.',
+                image: null,
+                category: 'Fitness',
+                pages: 100,
+                format: 'PDF',
+                delivery: 'E-mail automático após pagamento'
+            },
+            {
+                id: 10,
+                title: 'Yoga para Estresse',
+                price: 17.00,
+                description: 'Técnicas de yoga e meditação para reduzir o estresse e aumentar a flexibilidade e bem-estar.',
+                image: null,
+                category: 'Bem-estar',
+                pages: 85,
+                format: 'PDF',
+                delivery: 'E-mail automático após pagamento'
+            },
+            {
+                id: 11,
+                title: 'Corrida de Rua',
+                price: 19.00,
+                description: 'Guia completo para corrida de rua com técnicas de respiração, postura e plano de treinamento.',
+                image: null,
+                category: 'Fitness',
+                pages: 95,
+                format: 'PDF',
+                delivery: 'E-mail automático após pagamento'
+            },
+            {
+                id: 12,
+                title: 'Alimentação Saudável',
+                price: 28.00,
+                description: 'Guia prático de alimentação saudável com receitas nutritivas e dicas para uma vida mais saudável.',
+                image: null,
+                category: 'Nutrição',
+                pages: 120,
                 format: 'PDF',
                 delivery: 'E-mail automático após pagamento'
             }

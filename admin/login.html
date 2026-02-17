@@ -3,10 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Administrativo | Mais Você</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login Admin - Mais Você Ebooks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
+        :root {
+            /* Typography */
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Space Grotesk', sans-serif;
+            
+            /* Font Sizes */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            
+            /* Font Weights */
+            --font-light: 300;
+            --font-normal: 400;
+            --font-medium: 500;
+            --font-semibold: 600;
+            --font-bold: 700;
+            --font-extrabold: 800;
+            
+            /* Line Heights */
+            --leading-tight: 1.25;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.75;
+            
+            /* Colors - Primary */
+            --primary-50: #fff5f7;
+            --primary-100: #ffe0e6;
+            --primary-200: #ffc1d1;
+            --primary-300: #ff9fb3;
+            --primary-400: #ff7a94;
+            --primary-500: #ff6b9d;
+            --primary-600: #e85a8c;
+            --primary-700: #d6497c;
+            --primary-800: #c2367d;
+            --primary-900: #9f2647;
+            
+            /* Colors - Secondary */
+            --secondary-50: #fffbeb;
+            --secondary-100: #fef3c7;
+            --secondary-200: #fde68a;
+            --secondary-300: #fcd34d;
+            --secondary-400: #fbbf24;
+            --secondary-500: #feca57;
+            --secondary-600: #f59e0b;
+            --secondary-700: #d97706;
+            --secondary-800: #b45309;
+            --secondary-900: #92400e;
+            
+            /* Colors - Gray */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Colors - Semantic */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,262 +118,320 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-50) 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-100) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--secondary-100) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
         .login-container {
-            background: white;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 400px;
-            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 420px;
+            padding: var(--space-6);
+            position: relative;
+            z-index: 10;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-3xl);
+            padding: var(--space-10);
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500) 0%, var(--secondary-500) 50%, var(--primary-500) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
         .login-header {
-            text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
         }
 
         .login-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff6b9d;
-            margin-bottom: 0.5rem;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+            border-radius: var(--radius-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-6);
+            font-size: var(--text-3xl);
+            color: white;
+            font-weight: var(--font-bold);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .login-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary-600) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-2);
         }
 
         .login-subtitle {
-            color: #666;
-            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-size: var(--text-base);
+            font-weight: var(--font-medium);
+        }
+
+        .login-form {
+            margin-bottom: var(--space-8);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
+            text-align: left;
         }
 
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #333;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: var(--font-semibold);
+            color: var(--gray-700);
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
         }
 
         .form-input {
             width: 100%;
-            padding: 0.875rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: var(--space-4) var(--space-4);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            font-size: var(--text-base);
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            font-family: var(--font-primary);
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #ff6b9d;
+            border-color: var(--primary-500);
             box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
         }
 
         .login-btn {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+            padding: var(--space-4) var(--space-8);
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
             color: white;
             border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border-radius: var(--radius-xl);
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
         }
 
         .login-btn:hover {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+            box-shadow: var(--shadow-xl);
         }
 
-        .login-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .login-btn:active {
+            transform: translateY(0);
         }
 
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 0.75rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            border: 1px solid #fcc;
-            font-size: 0.875rem;
-            display: none;
+        .login-footer {
+            color: var(--gray-500);
+            font-size: var(--text-sm);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--gray-200);
         }
 
-        .success-message {
-            background: #efe;
-            color: #3c3;
-            padding: 0.75rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            border: 1px solid #cfc;
-            font-size: 0.875rem;
-            display: none;
-        }
-
-        .back-link {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .back-link a {
-            color: #ff6b9d;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .back-link a:hover {
-            color: #feca57;
-        }
-
-        .loading {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 0.8s linear infinite;
-            margin-right: 0.5rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
+        /* Responsive */
         @media (max-width: 480px) {
             .login-container {
-                margin: 1rem;
-                padding: 2rem;
+                padding: var(--space-4);
+            }
+            
+            .login-card {
+                padding: var(--space-8) var(--space-6);
+            }
+            
+            .login-title {
+                font-size: var(--text-2xl);
+            }
+            
+            .login-logo {
+                width: 70px;
+                height: 70px;
+                font-size: var(--text-2xl);
             }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-header">
-            <div class="login-logo">Mais Você</div>
-            <div class="login-subtitle">Painel Administrativo</div>
-        </div>
-
-        <div class="error-message" id="error-message">
-            Usuário ou senha incorretos
-        </div>
-
-        <div class="success-message" id="success-message">
-            Login realizado com sucesso!
-        </div>
-
-        <form id="login-form">
-            <div class="form-group">
-                <label class="form-label" for="username">Usuário</label>
-                <input type="text" id="username" class="form-input" required placeholder="Digite seu usuário">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h1 class="login-title">Painel Administrativo</h1>
+                <p class="login-subtitle">Mais Você Ebooks</p>
             </div>
-
-            <div class="form-group">
-                <label class="form-label" for="password">Senha</label>
-                <input type="password" id="password" class="form-input" required placeholder="Digite sua senha">
+            
+            <form class="login-form" id="adminLoginForm" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label" for="admin-email">E-mail Administrativo</label>
+                    <input type="email" class="form-input" id="admin-email" required placeholder="admin@maisvocebooks.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="admin-password">Senha de Acesso</label>
+                    <input type="password" class="form-input" id="admin-password" required placeholder="••••••••">
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Acessar Painel</span>
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <p>Área restrita para administradores</p>
             </div>
-
-            <button type="submit" class="login-btn" id="login-btn">
-                Entrar
-            </button>
-        </form>
-
-        <div class="back-link">
-            <a href="../index.html">← Voltar para o site</a>
         </div>
     </div>
 
     <script>
-        // Credenciais padrão (em produção, use variáveis de ambiente)
-        const ADMIN_CREDENTIALS = {
-            username: 'admin',
-            password: 'maisvoce2024'
-        };
-
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        function handleLogin(event) {
+            event.preventDefault();
             
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const loginBtn = document.getElementById('login-btn');
-            const errorMessage = document.getElementById('error-message');
-            const successMessage = document.getElementById('success-message');
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            const btn = document.getElementById('loginBtn');
+            const btnText = btn.querySelector('span');
             
-            // Resetar mensagens
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
+            // Permite entrar mesmo vazio
+            console.log('Tentando login com:', { email, password });
             
-            // Validar campos
-            if (!username || !password) {
-                errorMessage.textContent = 'Preencha todos os campos';
-                errorMessage.style.display = 'block';
-                return;
-            }
+            // Loading state
+            btn.disabled = true;
+            btnText.textContent = 'Autenticando...';
             
-            // Mostrar loading
-            loginBtn.disabled = true;
-            loginBtn.innerHTML = '<span class="loading"></span> Autenticando...';
-            
-            // Simular delay de autenticação
+            // Simulação de autenticação rápida
             setTimeout(() => {
-                // Verificar credenciais
-                if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-                    // Salvar sessão
-                    sessionStorage.setItem('admin_logged_in', 'true');
-                    sessionStorage.setItem('admin_username', username);
-                    
-                    // Mostrar sucesso
-                    successMessage.style.display = 'block';
-                    
-                    // Redirecionar após 1 segundo
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1000);
-                } else {
-                    // Mostrar erro
-                    errorMessage.style.display = 'block';
-                    loginBtn.disabled = false;
-                    loginBtn.innerHTML = 'Entrar';
-                    
-                    // Limpar campos
-                    document.getElementById('password').value = '';
-                    document.getElementById('password').focus();
-                }
-            }, 1500);
-        });
-
-        // Verificar se já está logado
-        window.addEventListener('load', () => {
-            if (sessionStorage.getItem('admin_logged_in') === 'true') {
+                localStorage.setItem('adminAuth', 'true');
+                
+                // Redirecionamento imediato
                 window.location.href = 'dashboard.html';
+            }, 1000);
+            
+            return false;
+        }
+
+        // Add enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('adminLoginForm').dispatchEvent(new Event('submit'));
             }
         });
-
-        // Foco no primeiro campo
-        document.getElementById('username').focus();
     </script>
 </body>
 </html>
